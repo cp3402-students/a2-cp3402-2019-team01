@@ -1,0 +1,6 @@
+.terraform
+*.tfstate
+.envrc
+*.pem
+db_data
+.idea
