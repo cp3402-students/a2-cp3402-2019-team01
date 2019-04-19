@@ -1,0 +1,22 @@
+version: 2
+
+jobs:
+  deploy:
+    docker:
+      - image: kroniak/ssh-client
+    steps:
+      - checkout
+      - add_ssh_keys
+      - run: echo ${PVT_KEY} > prvt_key.pem
+      - run: ./helper.sh deploy_to_env $(if [ $CIRCLE_BRANCH = "master" ]; then echo "prod"; else echo "stage"; fi)
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+                - staging
