@@ -1,5 +1,10 @@
 # The Coffee Can Website Repository
 
+**Production:** cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com
+
+
+**Staging:** cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080
+
 ## Dependencies
 To develop for the wordpress site or the infrastructure it is installed on, a few dependencies are required to be installed on your machine.
 
@@ -37,22 +42,7 @@ Static file changes if tested in production would effect end users and therefore
 
 
 ## Deploying wordpress
-Deploying changes to the wordpress theme or plugins is currently a manual process. The branches `master` and `staging` should be a mirror of their respective environment. This is to say that changes in master should also be in production and the two should never be out of sync unless an error has occurred. The same is to be said for staging.
-
-
-**Deploy to production:**
-1. From within the repo, checkout master and update master: 
-    1. `git checkout master`
-    1. `git fetch origin master`
-1. Push your changes using the helper script: `./helper.sh deploy_to_env prod
-
-
-**Deploy to staging:**
-1. From within the repo, checkout staging and update staging: 
-    1. `git checkout staging`
-    1. `git fetch origin staging`
-1. Push your changes using the helper script: `./helper.sh deploy_to_env stage
-
+Deploying changes to the wordpress theme or plugins is an automatic process. The branches `master` and `staging` should be a mirror of their respective environment. This is to say that changes in master should also be in production and the two should never be out of sync unless an error has occurred. The same is to be said for staging. When branches are merged to staging or master, CircleCI is configured to deploy those changes automatically.
 
 ## Developing & Deploying Infrastructure
 TODO
