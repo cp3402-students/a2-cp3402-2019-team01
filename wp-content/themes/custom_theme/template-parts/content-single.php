@@ -40,6 +40,7 @@
 
     <?php custom_theme_post_thumbnail(); ?>
 
+    <section class="post-content">
     <div class="entry-content">
         <?php
         the_content(sprintf(
@@ -65,4 +66,18 @@
     <footer class="entry-footer">
         <!--  <?php //custom_theme_entry_footer(); ?> Content is disabled as we have everything in the header. -->
     </footer><!-- .entry-footer -->
+
+    <?php
+    // Navigation links moved up above the comments section, no one likes comments. ;)
+    custom_theme_post_navigation();
+
+    // If comments are open or we have at least one comment, load up the comment template.
+    if ( comments_open() || get_comments_number() ) :
+        comments_template();
+			endif; ?>
+
+    </section><!-- .post-content -->
+
+    <?php get_sidebar(); ?>
+
 </article><!-- #post-<?php the_ID(); ?> -->

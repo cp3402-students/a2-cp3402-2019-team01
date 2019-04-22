@@ -26,7 +26,7 @@ if ( ! function_exists( 'custom_theme_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'custom_theme' ),
+			esc_html_x( 'Posted %s', 'post date', 'custom_theme' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
@@ -110,6 +110,78 @@ if ( ! function_exists( 'custom_theme_entry_footer' ) ) :
 		);
 	}
 endif;
+
+/**
+ * Display the category list with no other frills.
+ */
+function custom_theme_display_category_list() {
+    /* translators: used between list items, there is a space after the comma */
+    $categories_list = get_the_category_list(esc_html__(', ', 'custom_theme'));
+    if ($categories_list) {
+        /* translators: 1: list of categories. */
+        printf('<span class="cat-links">' . esc_html__(' under %1$s', 'custom_theme') . '</span>', $categories_list); // WPCS: XSS OK.
+    };
+};
+
+/**
+ * Display the comment count hyperlink.
+ */
+function custom_theme_display_comment_link() {
+    if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+        echo '<span class="comments-link">';
+        comments_popup_link(
+            sprintf(
+                wp_kses(
+                /* translators: %s: post title */
+                    __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'custom_theme' ),
+                    array(
+                        'span' => array(
+                            'class' => array(),
+                        ),
+                    )
+                ),
+                get_the_title()
+            )
+        );
+        echo '</span>';
+    }
+}
+
+/**
+ * Display the edit post hyperlink.
+ */
+function custom_theme_display_edit_post_link() {
+    edit_post_link(
+        sprintf(
+            wp_kses(
+            /* translators: %s: Name of current post. Only visible to screen readers */
+                __( 'Edit <span class="screen-reader-text">%s</span>', 'custom_theme' ),
+                array(
+                    'span' => array(
+                        'class' => array(),
+                    ),
+                )
+            ),
+            get_the_title()
+        ),
+        '<span class="edit-link">',
+        '</span>'
+    );
+};
+
+/**
+ * Post navigation (previous / next post) for single posts.
+ */
+function custom_theme_post_navigation() {
+    the_post_navigation( array(
+        'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next <i class="fas fa-chevron-right"></i>', 'custom_theme' ) . '</span> ' .
+            '<span class="screen-reader-text">' . __( 'Next post:', 'custom_theme' ) . '</span> ' .
+            '<span class="post-title">%title</span>',
+        'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( '<i class="fas fa-chevron-left"></i> Previous', 'custom_theme' ) . '</span> ' .
+            '<span class="screen-reader-text">' . __( 'Previous post:', 'custom_theme' ) . '</span> ' .
+            '<span class="post-title">%title</span>',
+    ) );
+}
 
 if ( ! function_exists( 'custom_theme_post_thumbnail' ) ) :
 	/**

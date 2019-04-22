@@ -18,9 +18,15 @@ function custom_theme_body_classes( $classes ) {
 	}
 
 	// Adds a class of no-sidebar when there is no sidebar present.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-		$classes[] = 'no-sidebar';
-	}
+	if ( is_active_sidebar( 'sidebar-1' ) ) {
+        $classes[]= 'has-sidebar';
+	} else {
+	    $classes[]= 'no-sidebar';
+    }
+
+	if ( is_multi_author() ) {
+	    $classes[]= 'group-blog';
+    }
 
 	return $classes;
 }
