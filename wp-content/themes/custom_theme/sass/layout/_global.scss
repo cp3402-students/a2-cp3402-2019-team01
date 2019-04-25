@@ -34,3 +34,11 @@
 
 	}
 }
+
+textarea {
+	&:active,
+	&:hover,
+	&:focus {
+		border: 1px solid $color__theme-highlight;
+	}
+}
