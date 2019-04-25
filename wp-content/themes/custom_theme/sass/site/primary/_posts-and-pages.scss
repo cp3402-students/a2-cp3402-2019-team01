@@ -1,0 +1,66 @@
+.sticky {
+	display: block;
+}
+
+.entry-header {
+	font-family: $font__serif;
+}
+
+.entry-title {
+	font-size: 2.3em;
+	margin: .125em 0 .25em;
+
+	a {
+		color: #404040;
+		text-decoration: none;
+
+		&:hover, &:focus {
+			color: $color__theme-highlight;
+		}
+	}
+}
+
+.page-title {
+	font-size: 2.3em;
+	margin: .125em 0 .25em;
+
+	a {
+		color: #404040;
+		text-decoration: none;
+
+		&:hover, &:focus {
+			color: $color__theme-highlight;
+		}
+	}
+}
+.posted-on, .cat-links, .comments-link, .edit-link {
+	font-size: 97%;
+
+	a {
+		text-decoration: none;
+
+		&:hover, &:focus {
+			color: $color__theme-highlight;
+		}
+	}
+}
+
+.post,
+.page {
+	margin: 0 0 1.5em;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
