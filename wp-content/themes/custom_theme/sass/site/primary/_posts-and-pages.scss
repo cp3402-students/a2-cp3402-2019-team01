@@ -20,8 +20,21 @@
 	}
 }
 
+.page-title {
+	font-size: 2.3em;
+	margin: .125em 0 .25em;
+
+	a {
+		color: #404040;
+		text-decoration: none;
+
+		&:hover, &:focus {
+			color: $color__theme-highlight;
+		}
+	}
+}
 .posted-on, .cat-links, .comments-link, .edit-link {
-	font-size: 85%;
+	font-size: 97%;
 
 	a {
 		text-decoration: none;

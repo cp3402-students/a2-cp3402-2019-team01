@@ -8,17 +8,23 @@
   }
 }
 
+.header-container {
+  position: relative;
+  background-color: $color__skin;
+  border-bottom: $color__theme-highlight 3px solid;
+}
+
 .site-header {
   position: relative;
-  padding: 1em;
+  padding: 1em 0;
+  width: 90%;
+  margin: 0 auto;
   font-family: $font__sans;
   color: #FFFFFF;
   background-color: $color__skin;
 
-  border-bottom: $color__theme-highlight 2px solid;
-
   @media screen and (min-width: $query__small) {
-    padding: 1em 2em;
+    width: 65%;
   }
 }
 

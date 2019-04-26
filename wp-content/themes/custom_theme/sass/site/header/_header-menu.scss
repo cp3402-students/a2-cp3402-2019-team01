@@ -106,7 +106,7 @@ button.dropdown-toggle {
   display: block;
 }
 
-@media screen and (min-width: $query__small) {
+@media screen and (min-width: $query__medium) {
   .menu-toggle {
     display: none;
   }

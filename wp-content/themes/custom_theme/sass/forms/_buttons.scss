@@ -13,10 +13,12 @@ input[type="submit"] {
 
 	&:hover {
 		border-color: $color__border-button-hover;
+		color: $color__theme-highlight;
 	}
 
 	&:active,
 	&:focus {
 		border-color: $color__border-button-focus;
+		color: $color__theme-highlight;
 	}
 }
