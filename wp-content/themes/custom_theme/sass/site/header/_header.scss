@@ -1,0 +1,97 @@
+.header-image {
+  max-height: 60vh;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100vw;
+  }
+}
+
+.header-container {
+  position: relative;
+  background-color: $color__skin;
+  border-bottom: $color__theme-highlight 3px solid;
+}
+
+.site-header {
+  position: relative;
+  padding: 1em 0;
+  width: 90%;
+  margin: 0 auto;
+  font-family: $font__sans;
+  color: #FFFFFF;
+  background-color: $color__skin;
+
+  @media screen and (min-width: $query__small) {
+    width: 65%;
+  }
+}
+
+.site-branding {
+  display: flex;
+  min-height: 65px;
+
+  .custom-logo-link {
+    margin-right: 1em;
+
+    img {
+      display: block;
+      height: 65px;
+      height: auto;
+    }
+  }
+}
+
+.site-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.6em;
+  font-weight: 900;
+  line-height: 1em;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+
+  }
+}
+
+.site-description {
+  margin: 0;
+  font-size: .9em;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.site-branding-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 65px;
+}
+
+@media screen and (min-width: $query__medium) {
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .site-branding {
+    width: 35%;
+    flex: 1 0 auto;
+  }
+
+  .site-navigation {
+    width: 55%;
+  }
+}
+
+/*--------------------------------------------------------------
+## Header Menu
+--------------------------------------------------------------*/
+@import "header-menu";

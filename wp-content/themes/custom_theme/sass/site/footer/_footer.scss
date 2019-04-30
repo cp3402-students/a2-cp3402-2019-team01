@@ -1,0 +1,138 @@
+.site-footer {
+  position: relative;
+  padding: 1em;
+  font-family: $font__sans;
+  color: $color__footer;
+  background-color: $color__background-footer;
+
+  border-top: $color__theme-highlight 3px solid;
+
+  @media screen and (min-width: $query__small) {
+    padding: 1em 2em;
+  }
+}
+
+.social-menu {
+  font-size: 1.6em;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    display: block;
+    padding: .4em .8em;
+    text-decoration: none;
+    color: $color_footer_link;
+
+    &:hover, &:focus {
+      //color: #e8c547;
+    }
+  }
+}
+
+.fa-home:hover, .fa-home:focus {
+  color: $color__theme-highlight;
+}
+
+.fa-facebook-square:hover, .fa-facebook-square:focus {
+  color: $color__facebook;
+}
+
+.fa-instagram:hover, .fa-instagram:focus {
+  color: $color__instagram;
+}
+
+.fa-twitter:hover, .fa-twitter:focus {
+  color: $color__twitter;
+}
+
+.footer-columns {
+  text-align: center;
+
+  ul {
+    margin: 1em 0;
+    padding: 0;
+  }
+
+  @media screen and (min-width: $query__medium) {
+    margin: 1em 0;
+  }
+}
+
+.footer-left-column {
+  //font-size: .9em;
+  float: left;
+  width: 50%;
+  padding: 0 4em 0 5px;
+  text-align: right;
+
+  border-right: $color__theme-highlight 1px solid;
+
+  ul {
+    list-style-type: none;
+  }
+
+  a {
+    color: $color_footer_link;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      color: $color__theme-highlight;
+    }
+  }
+
+  @media screen and (min-width: $query__medium) {
+    padding: 0 8em 0 5px;
+  }
+}
+
+.footer-right-column {
+  //font-size: .9em;
+  float: left;
+  width: 50%;
+  padding: 0 5px 0 4em;
+  text-align: left;
+
+  ul {
+    list-style-type: none;
+  }
+
+  a {
+    color: $color_footer_link;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      color: $color__theme-highlight;
+    }
+  }
+
+  @media screen and (min-width: $query__medium) {
+    padding: 0 5px 0 8em;
+  }
+}
+
+.site-info {
+  //font-size: .9em;
+  text-align: center;
+  clear: both;
+  margin-bottom: 1em;
+  padding-top: 2em;
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover, &:focus {
+      color: $color__theme-highlight;
+    }
+  }
+
+  @media screen and (min-width: $query__medium) {
+    padding-top: 3em;
+  }
+}

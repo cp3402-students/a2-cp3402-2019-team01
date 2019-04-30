@@ -42,9 +42,12 @@ if ( ! function_exists( 'custom_theme_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
+		// This theme uses wp_nav_menu() in three locations.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'custom_theme' ),
+            'footer-left' => esc_html__( 'Footer Left Column', 'custom_theme' ),
+            'footer-right' => esc_html__( 'Footer Right Column', 'custom_theme' ),
+            'social-media' => esc_html__( 'Social Media', 'custom_theme' ), // Social media links
 		) );
 
 		/*
@@ -68,14 +71,16 @@ if ( ! function_exists( 'custom_theme_setup' ) ) :
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
+        add_theme_support( 'custom-header' );
+
 		/**
 		 * Add support for core custom logo.
 		 *
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
 		add_theme_support( 'custom-logo', array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 100,
+			'width'       => 100,
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
@@ -117,12 +122,83 @@ function custom_theme_widgets_init() {
 add_action( 'widgets_init', 'custom_theme_widgets_init' );
 
 /**
+ * Register custom fonts.
+ */
+function custom_theme_fonts_url() {
+    $fonts_url = '';
+
+    /*
+     * Translators: If there are characters in your language that are not
+     * supported by Roboto and Open Sans, translate this to 'off'. Do not translate
+     * into your own language.
+     */
+    $roboto = _x( 'on', 'Roboto font: on or off', 'custom_theme' );
+
+    $open_sans = _x( 'on', 'Open Sans font: on or off', 'custom_theme' );
+
+    $font_families = array();
+
+    if ( 'off' !== $roboto ) {
+        $font_families[] = 'Roboto:400,400i,700,700i';
+    }
+    if ( 'off' !== $open_sans ) {
+        $font_families[] = 'Open+Sans:400,400i,700,700i';
+    }
+
+    if (in_array( 'on', array($roboto, $open_sans))) {
+        $query_args = array(
+            'family' => urlencode( implode( '|', $font_families ) ),
+            'subset' => urlencode( 'latin,latin-ext' ),
+        );
+
+        $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+    }
+
+    return esc_url_raw( $fonts_url );
+}
+
+/**
+ * Add preconnect for Google Fonts.
+ *
+ * @param array  $urls           URLs to print for resource hints.
+ * @param string $relation_type  The relation type the URLs are printed.
+ * @return array $urls           URLs to print for resource hints.
+ */
+function custom_theme_resource_hints( $urls, $relation_type ) {
+    if ( wp_style_is( 'custom_theme-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+        $urls[] = array(
+            'href' => 'https://fonts.gstatic.com',
+            'crossorigin',
+        );
+    }
+
+    return $urls;
+}
+add_filter( 'wp_resource_hints', 'custom_theme_resource_hints', 10, 2 );
+
+/**
  * Enqueue scripts and styles.
  */
 function custom_theme_scripts() {
-	wp_enqueue_style( 'custom_theme-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'custom_theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+    // Enqueue Google Fonts: Roboto and Open Sans.
+    wp_enqueue_style( 'custom_theme_fonts', custom_theme_fonts_url() );
+
+    // Enqueue Font Awesome.
+    wp_enqueue_style( 'fontawesome', 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' );
+
+	wp_enqueue_style( 'custom_theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version') );
+
+	wp_enqueue_script( 'custom_theme-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
+
+	wp_localize_script('custom_theme-navigation', 'custom_themeScreenReaderText', array(
+	    'expand' => __( 'Expand child menu', 'custom_theme'),
+        'collapse' => __( 'Collapse child menu', 'custom_theme'),
+    ));
+
+    // Enqueue the js functions file.
+    wp_enqueue_script( 'custom_theme-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '20190422', true );
+
 
 	wp_enqueue_script( 'custom_theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -158,4 +234,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
