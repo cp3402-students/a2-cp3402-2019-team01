@@ -1,0 +1,16 @@
+.no-results {
+  margin: 1em 0;
+  padding: 1em;
+  background-color: white;
+}
+
+.no-results p {
+  padding-left: 1em;
+  border-left: 2px solid $color__text-warning;
+}
+
+.no-results .search-form {
+  margin-top: 2em;
+  margin-bottom: 19em;
+  text-align: left;
+}

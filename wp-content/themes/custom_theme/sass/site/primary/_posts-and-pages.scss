@@ -1,66 +1,114 @@
 .sticky {
-	display: block;
+  display: block;
 }
 
 .entry-header {
-	font-family: $font__serif;
+  font-family: $font__serif;
 }
 
 .entry-title {
-	font-size: 2.3em;
-	margin: .125em 0 .25em;
+  font-size: 2.3em;
+  margin: .125em 0 .25em;
 
-	a {
-		color: #404040;
-		text-decoration: none;
+  a {
+    color: #404040;
+    text-decoration: none;
 
-		&:hover, &:focus {
-			color: $color__theme-highlight;
-		}
-	}
+    &:hover, &:focus {
+      color: $color__theme-highlight;
+    }
+  }
+}
+
+.entry-meta {
+  border-left: 2px solid $color__theme-highlight;
 }
 
 .page-title {
-	font-size: 2.3em;
-	margin: .125em 0 .25em;
+  font-size: 2.3em;
+  margin: .125em 0 .25em;
 
-	a {
-		color: #404040;
-		text-decoration: none;
+  a {
+    color: #404040;
+    text-decoration: none;
 
-		&:hover, &:focus {
-			color: $color__theme-highlight;
-		}
-	}
+    &:hover, &:focus {
+      color: $color__theme-highlight;
+    }
+  }
 }
+
 .posted-on, .cat-links, .comments-link, .edit-link {
-	font-size: 97%;
+  font-size: 97%;
 
-	a {
-		text-decoration: none;
+  a {
+    text-decoration: none;
 
-		&:hover, &:focus {
-			color: $color__theme-highlight;
-		}
-	}
+    &:hover, &:focus {
+      color: $color__theme-highlight;
+    }
+  }
 }
 
-.post,
-.page {
-	margin: 0 0 1.5em;
+.post {
+  margin: 1em 0;
+  padding: 1em;
 }
 
 .updated:not(.published) {
-	display: none;
+  display: none;
 }
 
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+  margin: .5em 0 0;
 }
 
 .page-links {
-	clear: both;
-	margin: 0 0 1.5em;
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+.full-bleed {
+  width: 100vw;
+  max-height: 1200px;
+  margin-top: 1em;
+  margin-left: -1em;
+  overflow: hidden;
+
+  @media screen and (min-width: $query__medium) {
+    margin-top: 1.5em;
+    margin-right: -2em;
+  }
+
+  @media screen and (min-width: $size__max-width) {
+    margin-right: calc(((-100vw + #{$size__max-width}) / 2) - 1em);
+    margin-left: calc(((-100vw + #{$size__max-width}) / 2) - 1em);
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.nav-previous {
+  padding-left: 0;
+
+  @media screen and (min-width: $query__medium) {
+    padding-left: 1em;
+  }
+}
+
+.nav-next {
+  padding-right: 0;
+
+  @media screen and (min-width: $query__medium) {
+    padding-right: 1em;
+  }
+}
+
+.single .full-bleed {
+  margin-bottom: 1em;
 }

@@ -13,23 +13,38 @@
 
 </div><!-- #content -->
 
+<?php get_sidebar('footer'); ?>
+
 <footer id="colophon" class="site-footer">
 
     <nav class="social-menu">
         <?php
-        wp_nav_menu(array('theme_location' => 'social-media',)); ?>
+        if (has_nav_menu('social-media')) {
+            wp_nav_menu(array('theme_location' => 'social-media',));
+        }
+        ?>
     </nav><!-- .social-menu -->
 
     <div class="footer-columns">
-        <nav class="footer-left-column">
-            <?php
-            wp_nav_menu(array('theme_location' => 'footer-left',)); ?>
-        </nav><!-- .footer-left-column -->
+        <div class="footer-left-column">
+            <nav>
+                <?php
+                if (has_nav_menu('footer-left')) {
+                    wp_nav_menu(array('theme_location' => 'footer-left',));
+                }
+                ?>
+            </nav>
+        </div><!-- .footer-left-column -->
 
-        <nav class="footer-right-column">
-            <?php
-            wp_nav_menu(array('theme_location' => 'footer-right',)); ?>
-        </nav><!-- .footer-right-column -->
+        <div class="footer-right-column">
+            <nav>
+                <?php
+                if (has_nav_menu('footer-right')) {
+                    wp_nav_menu(array('theme_location' => 'footer-right',));
+                }
+                ?>
+            </nav>
+        </div><!-- .footer-right-column -->
     </div><!-- .footer-columns -->
 
     <div class="site-info">
