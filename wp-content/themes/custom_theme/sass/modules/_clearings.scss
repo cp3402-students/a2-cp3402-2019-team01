@@ -8,7 +8,7 @@
 .site-content:after,
 .site-footer:before,
 .site-footer:after {
-	@include clearfix;
+  @include clearfix;
 }
 
 .clear:after,
@@ -16,5 +16,5 @@
 .comment-content:after,
 .site-content:after,
 .site-footer:after {
-	@include clearfix-after;
+  @include clearfix-after;
 }

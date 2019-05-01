@@ -42,25 +42,55 @@
 
     <div class="entry-content">
         <?php
-        the_content(sprintf(
-            wp_kses(
-            /* translators: %s: Name of current post. Only visible to screen readers */
-                __('Continue reading<span class="screen-reader-text"> "%s"</span>', 'custom_theme'),
-                array(
-                    'span' => array(
-                        'class' => array(),
-                    ),
-                )
-            ),
-            get_the_title()
-        ));
 
-        wp_link_pages(array(
-            'before' => '<div class="page-links">' . esc_html__('Pages:', 'custom_theme'),
-            'after' => '</div>',
-        ));
+        //Change this if we decide we only want to show an excerpt for each post on the index page.
+        $show_post_as_excerpt = true;
+
+        if ($show_post_as_excerpt === true) {
+            the_excerpt();
+        } else {
+            the_content(sprintf(
+                wp_kses(
+                /* translators: %s: Name of current post. Only visible to screen readers */
+                    __('Continue reading<span class="screen-reader-text"> "%s"</span>', 'custom_theme'),
+                    array(
+                        'span' => array(
+                            'class' => array(),
+                        ),
+                    )
+                ),
+                get_the_title()
+            ));
+
+            wp_link_pages(array(
+                'before' => '<div class="page-links">' . esc_html__('Pages:', 'custom_theme'),
+                'after' => '</div>',
+            ));
+        }
         ?>
     </div><!-- .entry-content -->
+
+    <div class="read-more-wrapper">
+        <div class="read-more">
+            <?php
+            $read_more_link = sprintf(
+                wp_kses(
+                /* translators: %s: Name of current post. Only visible to screen readers */
+                    __('Read more<span class="screen-reader-text"> "%s"</span>', 'custom_theme'),
+                    array(
+                        'span' => array(
+                            'class' => array(),
+                        ),
+                    )
+                ),
+                get_the_title()
+            );
+            ?>
+            <a href="<?php echo esc_url(get_permalink()) ?>" rel="bookmark">
+                <?php echo $read_more_link; ?>
+            </a>
+        </div><!-- .read-more -->
+    </div><!-- .read-more-wrapper -->
 
     <footer class="entry-footer">
         <!--  <?php //custom_theme_entry_footer(); ?> Content is disabled as we have everything in the header. -->

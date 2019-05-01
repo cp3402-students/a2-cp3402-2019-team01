@@ -10,42 +10,46 @@
 
 .header-container {
   position: relative;
-  background-color: $color__skin;
-  border-bottom: $color__theme-highlight 3px solid;
+  font-family: $font__sans;
+  color: #fff;
+  background-color: $color__background-header;
+
+  border-bottom: $color__theme-highlight 2px solid;
 }
 
 .site-header {
-  position: relative;
-  padding: 1em 0;
-  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
-  font-family: $font__sans;
-  color: #FFFFFF;
-  background-color: $color__skin;
+  padding: 1em;
 
   @media screen and (min-width: $query__small) {
-    width: 65%;
+    padding: 1em 2em;
   }
 }
 
 .site-branding {
   display: flex;
   min-height: 65px;
+}
 
-  .custom-logo-link {
-    margin-right: 1em;
+.custom-logo-link {
+  margin-right: 1em;
 
-    img {
-      display: block;
-      height: 65px;
-      height: auto;
-    }
+  img {
+    display: block;
+    height: 65px;
+    width: auto;
   }
 }
 
+.site-branding-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 65px;
+}
+
 .site-title {
-  margin: 0;
-  padding: 0;
   font-size: 1.6em;
   font-weight: 900;
   line-height: 1em;
@@ -54,10 +58,10 @@
     color: white;
     text-decoration: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       text-decoration: underline;
     }
-
   }
 }
 
@@ -68,11 +72,18 @@
   font-weight: 100;
 }
 
-.site-branding-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 65px;
+@media screen and (min-width: $query__small) {
+  .custom-logo-link {
+    img {
+      height: 95px;
+    }
+  }
+  .site-branding {
+    min-height: 95px;
+  }
+  .site-branding-text {
+    height: 95px;
+  }
 }
 
 @media screen and (min-width: $query__medium) {
@@ -81,17 +92,29 @@
     justify-content: space-between;
   }
 
-  .site-branding {
-    width: 35%;
-    flex: 1 0 auto;
-  }
-
   .site-navigation {
     width: 55%;
   }
+
+  .custom-logo-link {
+    img {
+      height: 125px;
+    }
+  }
+  .site-branding {
+    min-height: 125px;
+    width: 35%;
+    flex: 1 0 auto;
+  }
+  .site-branding-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 125px;
+  }
 }
 
-/*--------------------------------------------------------------
-## Header Menu
---------------------------------------------------------------*/
+/*
+Header Menu
+*/
 @import "header-menu";

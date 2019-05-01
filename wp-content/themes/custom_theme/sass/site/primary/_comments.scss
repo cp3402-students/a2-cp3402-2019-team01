@@ -4,9 +4,14 @@
 
 .bypostauthor {
   display: block;
+
+  .avatar {
+    box-sizing: content-box;
+    border: 1px solid $color__theme-highlight;
+  }
 }
 
-.comment-metadata {
+.comment-metadata, .comment-content {
   padding-left: 3em;
 
   a {
@@ -72,7 +77,6 @@
       .comment-content {
         margin-left: 80px;
       }
-
     }
   }
 
@@ -82,7 +86,6 @@
     .children {
       margin-left: 3em;
     }
-
 
     .comment-content {
       margin-left: 90px;
@@ -100,10 +103,10 @@
     padding: .5em 1.4em;
     font-family: $font__sans;
     font-size: 97%;
-    color: #000;
+    color: $color__text-main;
     line-height: 1.3em;
     text-decoration: none;
-    border: #cccccc 1px solid ;
+    border: #cccccc 1px solid;
 
     &:hover,
     &:focus {
@@ -122,5 +125,78 @@
   a {
     word-wrap: break-word;
   }
+}
 
+.comment-awaiting-moderation {
+  font-size: 1em;
+  color: $color__text-warning;
+  display: block;
+  padding-left: 3em;
+}
+
+.comment-reply-title {
+  margin-bottom: .6em;
+}
+
+.comment-list .comment-reply-title {
+  text-align: left;
+}
+
+.comment-form {
+  font-family: $font__sans;
+  line-height: 1.3em;
+
+  a {
+    font-weight: 500;
+  }
+
+  .form-submit {
+    text-align: right;
+  }
+
+  .form-submit input {
+    background: $color__theme-comment-button-background;
+    display: inline-block;
+    padding: .5em 1.4em;
+    font-family: $font__sans;
+    font-size: 97%;
+    color: $color__text-main;
+    line-height: 1.3em;
+    text-decoration: none;
+    border: #cccccc 1px solid;
+
+    &:hover,
+    &:focus {
+      background: white;
+      border-color: $color__theme-highlight;
+    }
+  }
+
+  label {
+    width: 45%;
+    display: block;
+    font-style: italic;
+    padding-bottom: .4em;
+  }
+
+  .required {
+    color: $color__text-warning;
+  }
+}
+
+.entry-footer {
+  font-family: $font__serif;
+
+  .comments-link {
+    display: block;
+  }
+}
+
+.comments-area {
+  padding-left: 0;
+  padding-right: 0;
+
+  @media screen and (min-width: $query__medium) {
+    padding: 0 1em;
+  }
 }

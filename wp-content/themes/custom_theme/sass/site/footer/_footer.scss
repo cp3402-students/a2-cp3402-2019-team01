@@ -5,7 +5,7 @@
   color: $color__footer;
   background-color: $color__background-footer;
 
-  border-top: $color__theme-highlight 3px solid;
+  border-top: $color__theme-highlight 2px solid;
 
   @media screen and (min-width: $query__small) {
     padding: 1em 2em;
@@ -13,7 +13,8 @@
 }
 
 .social-menu {
-  font-size: 1.6em;
+  margin-top: 1em;
+  font-size: 1.2em;
 
   ul {
     display: flex;
@@ -27,12 +28,13 @@
     display: block;
     padding: .4em .8em;
     text-decoration: none;
-    color: $color_footer_link;
-
-    &:hover, &:focus {
-      //color: #e8c547;
-    }
+    color: $color__footer_link;
   }
+
+  @media screen and (min-width: $query__medium) {
+    margin-top: 1.5em;
+  }
+
 }
 
 .fa-home:hover, .fa-home:focus {
@@ -51,8 +53,29 @@
   color: $color__twitter;
 }
 
+.fa-linkedin:hover, .fa-linkedin:focus {
+  color: $color__linkedin;
+}
+
+.fa-youtube:hover, .fa-youtube:focus {
+  color: $color__youtube
+}
+
+.fa-reddit:hover, .fa-reddit:focus {
+  color: $color__reddit
+}
+
+.fa-snapchat:hover, .fa-snapchat:focus {
+  color: $color__snapchat
+}
+
+.fa-pinterest:hover, .fa-pinterest:focus {
+  color: $color__pinterest
+}
+
 .footer-columns {
   text-align: center;
+  margin: 1em 0;
 
   ul {
     margin: 1em 0;
@@ -60,12 +83,12 @@
   }
 
   @media screen and (min-width: $query__medium) {
-    margin: 1em 0;
+    margin: 2em 0;
   }
 }
 
 .footer-left-column {
-  //font-size: .9em;
+  min-height: 1px;
   float: left;
   width: 50%;
   padding: 0 4em 0 5px;
@@ -78,7 +101,7 @@
   }
 
   a {
-    color: $color_footer_link;
+    color: $color__footer_link;
     text-decoration: none;
 
     &:hover, &:focus {
@@ -92,7 +115,7 @@
 }
 
 .footer-right-column {
-  //font-size: .9em;
+  min-height: 1px;
   float: left;
   width: 50%;
   padding: 0 5px 0 4em;
@@ -103,7 +126,7 @@
   }
 
   a {
-    color: $color_footer_link;
+    color: $color__footer_link;
     text-decoration: none;
 
     &:hover, &:focus {
@@ -117,7 +140,6 @@
 }
 
 .site-info {
-  //font-size: .9em;
   text-align: center;
   clear: both;
   margin-bottom: 1em;
