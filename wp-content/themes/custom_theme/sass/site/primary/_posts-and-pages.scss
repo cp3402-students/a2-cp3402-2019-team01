@@ -9,6 +9,8 @@
 .entry-title {
   font-size: 2.3em;
   margin: .125em 0 .25em;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
 
   a {
     color: #404040;
@@ -74,7 +76,7 @@
   width: 100vw;
   max-height: 1200px;
   margin-top: 1em;
-  margin-left: -1em;
+  margin-left: -2em;
   overflow: hidden;
 
   @media screen and (min-width: $query__medium) {
@@ -83,8 +85,8 @@
   }
 
   @media screen and (min-width: $size__max-width) {
-    margin-right: calc(((-100vw + #{$size__max-width}) / 2) - 1em);
-    margin-left: calc(((-100vw + #{$size__max-width}) / 2) - 1em);
+    margin-right: calc(((-100vw + #{$size__max-width}) / 2) - 2em);
+    margin-left: calc(((-100vw + #{$size__max-width}) / 2) - 2em);
   }
 
   img {

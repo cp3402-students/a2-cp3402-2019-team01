@@ -39,4 +39,31 @@
             }
         });
     });
+
+    // Header background colour.
+    wp.customize('theme_header_color', function (value) {
+        value.bind(function (to) {
+            $('.header-container, .site-footer').css({
+                'background-color': to
+            });
+        });
+    });
+
+    // Footer background colour.
+    wp.customize('theme_footer_color', function (value) {
+        value.bind(function (to) {
+            $('.site-footer').css({
+                'background-color': to
+            });
+        });
+    });
+
+    // Category links color.
+    wp.customize('category_link_color', function (value) {
+        value.bind(function (to) {
+            $('.cat-links a').css({
+                'color': to
+            });
+        });
+    });
 })(jQuery);

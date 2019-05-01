@@ -1,5 +1,9 @@
 .archive-view {
 
+  .post-thumbnail img {
+    padding: 1em;
+  }
+
   .post {
     position: relative;
     background: white;
@@ -58,10 +62,6 @@
       border-color: $color__theme-highlight;
     }
   }
-}
-
-.post-thumbnail img {
-  padding: 1em;
 }
 
 .sticky::before {
