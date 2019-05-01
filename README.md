@@ -5,6 +5,10 @@
 
 **Staging:** cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080
 
+
+**CircleCI (Master Branch):** [![CircleCI](https://circleci.com/gh/cp3402-students/a2-cp3402-2019-team01/tree/master.svg?style=svg)](https://circleci.com/gh/cp3402-students/a2-cp3402-2019-team01/tree/master)
+
+
 ## Dependencies
 To develop for the wordpress site or the infrastructure it is installed on, a few dependencies are required to be installed on your machine.
 
