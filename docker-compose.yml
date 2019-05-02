@@ -19,7 +19,6 @@ services:
     volumes:
       - ./wp-content/themes/custom_theme:/var/www/html/wp-content/themes/custom_theme
       - ./wp-content/plugins:/var/www/html/wp-content/plugins
-      - ./wp-content/uploads:/var/www/html/wp-content/uploads
     ports:
       - "8000:80"
     restart: always
