@@ -57,7 +57,7 @@ resource "aws_alb_target_group" "alb_target_group" {
   health_check {
     path     = "/"
     protocol = "HTTP"
-    matcher  = "302,200"
+    matcher  = "301,302,200"
     port     = "${var.host_port}"
   }
 }
