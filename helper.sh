@@ -9,7 +9,6 @@ deploy_to_env () {
     ssh -o "StrictHostKeyChecking no" -t ec2-user@13.239.37.152 "rm -rf /ecs/cp3402-$env-storage/wp-content/theme/custom_theme"
     scp -r -o "StrictHostKeyChecking no" ./wp-content/plugins/. ec2-user@13.239.37.152:/ecs/cp3402-${env}-storage/wp-content/plugins/
     scp -r -o "StrictHostKeyChecking no" ./wp-content/themes/custom_theme/. ec2-user@13.239.37.152:/ecs/cp3402-${env}-storage/wp-content/themes/custom_theme/
-    scp -r -o "StrictHostKeyChecking no" ./wp-content/uploads/. ec2-user@13.239.37.152:/ecs/cp3402-${env}-storage/wp-content/uploads/
 }
 
 eval $@
