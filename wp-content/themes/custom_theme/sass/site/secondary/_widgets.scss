@@ -191,7 +191,9 @@
   }
 
   .pad {
-    display: none;
+    // We don't want to see the cells that have no contents, looks messy.
+    background-color: transparent;
+    border-color: transparent;
   }
 
   a {

@@ -201,7 +201,6 @@ add_filter('wp_resource_hints', 'custom_theme_resource_hints', 10, 2);
  */
 function custom_theme_scripts()
 {
-
     // Enqueue Google Fonts: Roboto and Open Sans.
     wp_enqueue_style('custom_theme_fonts', custom_theme_fonts_url());
 
@@ -219,7 +218,6 @@ function custom_theme_scripts()
 
     // Enqueue the js functions file.
     wp_enqueue_script('custom_theme-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '20190422', true);
-
 
     wp_enqueue_script('custom_theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true);
 
