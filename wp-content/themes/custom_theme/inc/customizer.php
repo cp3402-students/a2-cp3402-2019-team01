@@ -28,12 +28,12 @@ function custom_theme_customize_register($wp_customize)
     $wp_customize->add_control(
         new WP_Customize_Color_Control (
             $wp_customize, 'theme_header_color', array(
-                'label' => __('Header background color', 'custom_theme'),
+                'label' => __('Header Background Color', 'custom_theme'),
                 'section' => 'colors',
                 'settings' => 'theme_header_color'
             )
         )
-    );
+    ); // End Header color setting.
 
     // Footer color setting.
     $wp_customize->add_setting('theme_footer_color', array(
@@ -47,34 +47,75 @@ function custom_theme_customize_register($wp_customize)
     $wp_customize->add_control(
         new WP_Customize_Color_Control (
             $wp_customize, 'theme_footer_color', array(
-                'label' => __('Footer background color', 'custom_theme'),
+                'label' => __('Footer Background Color', 'custom_theme'),
                 'section' => 'colors',
                 'settings' => 'theme_footer_color'
             )
         )
-    );
+    ); // End Footer color setting.
 
-    // Category link color setting
+    // Category link color setting.
     $wp_customize->add_setting('category_link_color',
         array(
             'default' => '#404040',
             'transport' => 'postMessage',
             'type' => 'theme_mod',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport' => 'postMessage',
         )
     );
 
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
-            'interactive_color', array(
+            'category_link_color', array(
                 'label' => __('Category Links Color', 'custom_theme'),
                 'section' => 'colors',
                 'settings' => 'category_link_color'
             )
         )
+    ); // Category link color setting.
+
+    // Theme Highlight color setting.
+    $wp_customize->add_setting('theme_highlight_color',
+        array(
+            'default' => '#e8c547',
+            'transport' => 'postMessage',
+            'type' => 'theme_mod',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
     );
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'theme_highlight_color', array(
+                'label' => __('Theme Highlight Color', 'custom_theme'),
+                'section' => 'colors',
+                'settings' => 'theme_highlight_color'
+            )
+        )
+    ); // Theme Highlight color setting.
+
+    // Hover and Focus Link color setting.
+    $wp_customize->add_setting('hover_focus_color',
+        array(
+            'default' => '#e8c547',
+            'transport' => 'postMessage',
+            'type' => 'theme_mod',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'hover_focus_color', array(
+                'label' => __('Hover and Focus Link Color', 'custom_theme'),
+                'section' => 'colors',
+                'settings' => 'hover_focus_color'
+            )
+        )
+    ); // Hover and Focus Link color setting.
 
     if (isset($wp_customize->selective_refresh)) {
         $wp_customize->selective_refresh->add_partial('blogname', array(
@@ -130,11 +171,10 @@ if (!function_exists('custom_theme_header_style')) :
     {
         $header_text_color = get_header_textcolor();
         $header_background_color = get_theme_mod('theme_header_color');
-
         $footer_background_color = get_theme_mod('theme_footer_color');
-
-
         $category_link_color = get_theme_mod('category_link_color');
+        $theme_highlight_color = get_theme_mod('theme_highlight_color');
+        $hover_focus_color = get_theme_mod('hover_focus_color');
         /*
          * If no custom options for text are set, let's bail.
          * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: add_theme_support( 'custom-header' ).
@@ -197,5 +237,22 @@ if (!function_exists('custom_theme_header_style')) :
             <?php
         }
 
+        if ('#e8c547' != $theme_highlight_color) { ?>
+            <style type="text/css">
+                .header-container, .site-footer, .entry-meta, .footer-left-colum {
+                    border-color: <?php echo esc_attr( $theme_highlight_color); ?>
+                }
+            </style>
+            <?php
+        }
+
+        if ('#e8c547' != $hover_focus_color) { ?>
+            <style type="text/css">
+                .a:hover, a:focus { /*----------------NEEDS TO BE COMPLETED ------------------------------------------*/
+                    border-color: <?php echo esc_attr( $hover_focus_color); ?>
+                }
+            </style>
+            <?php
+        }
     }
 endif;

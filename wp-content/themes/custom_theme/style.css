@@ -611,6 +611,10 @@ td:last-child {
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
+form {
+    padding: 1em;
+}
+
 button,
 input[type=button],
 input[type=reset],
@@ -2109,7 +2113,8 @@ button.dropdown-toggle:hover, button.dropdown-toggle:focus {
 }
 
 .widget_calendar .pad {
-    display: none;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .widget_calendar a {

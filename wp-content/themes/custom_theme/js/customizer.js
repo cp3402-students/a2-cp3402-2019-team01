@@ -20,7 +20,7 @@
         });
     });
 
-    // Header text color.
+    // Header text colour.
     wp.customize('header_textcolor', function (value) {
         value.bind(function (to) {
             if ('blank' === to) {
@@ -43,7 +43,7 @@
     // Header background colour.
     wp.customize('theme_header_color', function (value) {
         value.bind(function (to) {
-            $('.header-container, .site-footer').css({
+            $('.header-container').css({
                 'background-color': to
             });
         });
@@ -58,7 +58,7 @@
         });
     });
 
-    // Category links color.
+    // Category links colour.
     wp.customize('category_link_color', function (value) {
         value.bind(function (to) {
             $('.cat-links a').css({
@@ -66,4 +66,23 @@
             });
         });
     });
+
+    // Theme highlight colour.
+    wp.customize('theme_highlight_color', function (value) {
+        value.bind(function (to) {
+            $('.header-container, .site-footer, .entry-meta, .footer-left-column').css({
+                'border-color': to
+            });
+        });
+    });
+
+    // Hyperlink hover/focus colour.
+    wp.customize('hover_focus_color', function (value) {
+        value.bind(function (to) {
+            $('a:hover, a:focus').css({
+                'color': to
+            });
+        });
+    });
+
 })(jQuery);
