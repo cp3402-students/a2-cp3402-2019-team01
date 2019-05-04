@@ -1,9 +1,9 @@
 # The Coffee Can Website Repository
 
-**Production:** [cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com](//cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com)
+**Production:** [cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com](http://cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com)
 
 
-**Staging:** [cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080](//cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080)
+**Staging:** [cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080](http://cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080)
 
 
 **CircleCI (Master Branch):** [![CircleCI](https://circleci.com/gh/cp3402-students/a2-cp3402-2019-team01/tree/master.svg?style=svg)](https://circleci.com/gh/cp3402-students/a2-cp3402-2019-team01/tree/master)
