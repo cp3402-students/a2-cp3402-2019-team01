@@ -1,9 +1,9 @@
 # The Coffee Can Website Repository
 
-**Production:** cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com
+**Production:** [cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com](http://cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com)
 
 
-**Staging:** cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080
+**Staging:** [cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080](http://cp3402-alb-1118752971.ap-southeast-2.elb.amazonaws.com:8080)
 
 
 **CircleCI (Master Branch):** [![CircleCI](https://circleci.com/gh/cp3402-students/a2-cp3402-2019-team01/tree/master.svg?style=svg)](https://circleci.com/gh/cp3402-students/a2-cp3402-2019-team01/tree/master)
@@ -24,10 +24,10 @@ To develop for the wordpress site or the infrastructure it is installed on, a fe
 
 
 ## Developing for Wordress
-Changes to wordpress can be broken down into two categories that are db changes and static file changes. Changes to these two categories are handled differently. 
+Changes to wordpress can be broken down into two categories that are db changes and static file changes. Changes to these two categories are handled differently.
 
 
-Db changes are changes to the websites content or configuration stored in the database. To make these changes to production, make them in the production wordpress admin panel. Given the nature of these changes, it is not neccessary first replicate them locally or in staging as you can generally test them in an unpublished state in wordpress that will not effect end users. 
+Db changes are changes to the websites content or configuration stored in the database. To make these changes to production, make them in the production wordpress admin panel. Given the nature of these changes, it is not neccessary first replicate them locally or in staging as you can generally test them in an unpublished state in wordpress that will not effect end users.
 
 
 Static file changes if tested in production would effect end users and therefore we cannot accept testing these in this manner. To make static file changes you develop them locally and push to staging for a review where end users are unaffected. When these changes are approved, you can then "publish" them by pushing them to production. The following instructions explain how to do this.
@@ -37,7 +37,7 @@ Static file changes if tested in production would effect end users and therefore
 1. Run the command `docker-compose up` from within the repository to start wordpress locally at `http://localhost:8000`
 1. Make your desired changes to `wp-content/themes/custom_theme/` or install plugins through the the admin console.
 1. Test these changes are working at `http://localhost:8000`
-1. Stage, commit and push your changes 
+1. Stage, commit and push your changes
     1. `git add .`
     1. `git commit -m "<Descriptive commit message>"`
     1. `git push -u origin cc-1`
