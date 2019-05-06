@@ -4,6 +4,7 @@
 
 .entry-header {
   font-family: $font__serif;
+  overflow: hidden;
 }
 
 .entry-title {
@@ -113,4 +114,8 @@
 
 .single .full-bleed {
   margin-bottom: 1em;
+}
+
+.page .entry-title {
+  display: none;
 }
