@@ -14,7 +14,38 @@ function custom_theme_customize_register($wp_customize)
 {
     $wp_customize->get_setting('blogname')->transport = 'postMessage';
     $wp_customize->get_setting('blogdescription')->transport = 'postMessage';
-//    $wp_customize->get_setting('header_textcolor')->transport = 'postMessage';
+
+    // Add a new section for general changes, starting with boolean option for title display on Page.php pages.
+    $wp_customize->add_section('theme_options', array(
+            'title' => __('Text Options', 'custom_theme'),
+            'priority' => 95,
+            'capability' => 'edit_theme_options',
+            'description' => __('Toggle the display of title on page.php pages')
+        )
+    );
+
+    $wp_customize->add_setting('page_title_visibility',
+        array(
+            'default' => 'inline-block',
+            'type' => 'theme_mod',
+            'sanitize_callback' => 'custom_theme_sanitize_page_title_visibility_control',
+            'transport' => 'postMessage'
+
+        )
+    );
+
+    $wp_customize->add_control('custom_theme_page_title_visibility_control',
+        array(
+            'type' => 'radio',
+            'label' => __('Display Title on "Page" type pages', 'custom_theme'),
+            'section' => 'theme_options',
+            'choices' => array(
+                'inline-block' => __('Visible (default)', 'custom_theme'),
+                'none' => __('Hidden', 'custom_theme')
+            ),
+            'settings' => 'page_title_visibility'
+        )
+    );
 
     // Header color setting.
     $wp_customize->add_setting('theme_header_color', array(
@@ -33,7 +64,7 @@ function custom_theme_customize_register($wp_customize)
                 'settings' => 'theme_header_color'
             )
         )
-    ); // End Header color setting.
+    );
 
     // Header text color setting.
     $wp_customize->add_setting('theme_header_text_color', array(
@@ -52,7 +83,45 @@ function custom_theme_customize_register($wp_customize)
                 'settings' => 'theme_header_text_color'
             )
         )
-    ); // End Header text color setting.
+    );
+
+    // Widgets footer color setting.
+    $wp_customize->add_setting('theme_widgets_footer_color', array(
+            'default' => '#484a51',
+            'transport' => 'postMessage',
+            'type' => 'theme_mod',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control (
+            $wp_customize, 'theme_widgets_footer_color', array(
+                'label' => __('Widget Footer Background Color', 'custom_theme'),
+                'section' => 'colors',
+                'settings' => 'theme_widgets_footer_color'
+            )
+        )
+    );
+
+    // Widgets footer text color setting.
+    $wp_customize->add_setting('theme_widgets_footer_text_color', array(
+            'default' => '#ffffff',
+            'transport' => 'postMessage',
+            'type' => 'theme_widgets_mod',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control (
+            $wp_customize, 'theme_widgets_footer_text_color', array(
+                'label' => __('Widget Footer Text Color', 'custom_theme'),
+                'section' => 'colors',
+                'settings' => 'theme_widgets_footer_text_color'
+            )
+        )
+    );
 
     // Footer color setting.
     $wp_customize->add_setting('theme_footer_color', array(
@@ -71,7 +140,7 @@ function custom_theme_customize_register($wp_customize)
                 'settings' => 'theme_footer_color'
             )
         )
-    ); // End Footer color setting.
+    );
 
     // Footer text color setting.
     $wp_customize->add_setting('theme_footer_text_color', array(
@@ -90,7 +159,7 @@ function custom_theme_customize_register($wp_customize)
                 'settings' => 'theme_footer_text_color'
             )
         )
-    ); // End Footer text color setting.
+    );
 
     // Category link color setting.
     $wp_customize->add_setting('category_link_color',
@@ -111,7 +180,7 @@ function custom_theme_customize_register($wp_customize)
                 'settings' => 'category_link_color'
             )
         )
-    ); // Category link color setting.
+    );
 
     // Theme Highlight color setting.
     $wp_customize->add_setting('theme_highlight_color',
@@ -132,7 +201,7 @@ function custom_theme_customize_register($wp_customize)
                 'settings' => 'theme_highlight_color'
             )
         )
-    ); // Theme Highlight color setting.
+    );
 
     if (isset($wp_customize->selective_refresh)) {
         $wp_customize->selective_refresh->add_partial('blogname', array(
@@ -147,6 +216,20 @@ function custom_theme_customize_register($wp_customize)
 }
 
 add_action('customize_register', 'custom_theme_customize_register');
+
+/**
+ * Sanitize length options:
+ * If something goes wrong and one of the two specified options are not used,
+ * apply the default (excerpt).
+ */
+
+function custom_theme_sanitize_page_title_visibility_control($value)
+{
+    if (!in_array($value, array('inline-block', 'none'))) {
+        $value = 'inline-block';
+    }
+    return $value;
+}
 
 /**
  * Render the site title for the selective refresh partial.
@@ -186,12 +269,29 @@ if (!function_exists('custom_theme_header_style')) :
      */
     function custom_theme_header_style()
     {
+
+        $page_title_visibility = get_theme_mod('page_title_visibility');
+
         $header_background_color = get_theme_mod('theme_header_color');
         $theme_header_text_color = get_theme_mod('theme_header_text_color');
+
         $footer_background_color = get_theme_mod('theme_footer_color');
         $theme_footer_text_color = get_theme_mod('theme_footer_text_color');
+
+        $widgets_footer_background_color = get_theme_mod('theme_widgets_footer_color');
+        $theme_widgets_footer_text_color = get_theme_mod('theme_widgets_footer_text_color');
+
         $category_link_color = get_theme_mod('category_link_color');
         $theme_highlight_color = get_theme_mod('theme_highlight_color');
+
+        if ('inline-block' != $page_title_visibility) { ?>
+            <style type="text/css">
+                .page .entry-title {
+                    display: <?php echo esc_attr( $page_title_visibility); ?>
+                }
+            </style>
+            <?php
+        }
 
         if ('#30323d' != $header_background_color) { ?>
             <style type="text/css">
@@ -206,6 +306,24 @@ if (!function_exists('custom_theme_header_style')) :
             <style type="text/css">
                 .header-container, .main-navigation a, .menu-toggle, .site-title a {
                     color: <?php echo esc_attr( $theme_header_text_color); ?>
+                }
+            </style>
+            <?php
+        }
+
+        if ('#484a51' != $widgets_footer_background_color) { ?>
+            <style type="text/css">
+                .footer-widgets {
+                    background-color: <?php echo esc_attr( $widgets_footer_background_color); ?>
+                }
+            </style>
+            <?php
+        }
+
+        if ('#ffffff' != $theme_widgets_footer_text_color) { ?>
+            <style type="text/css">
+                .footer-widgets, .footer-widgets a, .footer-widgets .widget-title {
+                    color: <?php echo esc_attr( $theme_widgets_footer_text_color); ?>
                 }
             </style>
             <?php
@@ -228,7 +346,6 @@ if (!function_exists('custom_theme_header_style')) :
             </style>
             <?php
         }
-
 
         if ('#404040' != $category_link_color) { ?>
             <style type="text/css">

@@ -38,6 +38,24 @@
         });
     });
 
+    // Widgets footer background color.
+    wp.customize('theme_widgets_footer_color', function (value) {
+        value.bind(function (to) {
+            $('.footer-widgets').css({
+                'background-color': to
+            });
+        });
+    });
+
+    // Widgets footer text color.
+    wp.customize('theme_widgets_footer_text_color', function (value) {
+        value.bind(function (to) {
+            $('.footer-widgets, .footer-widgets a, .footer-widgets .widget-title').css({
+                'color': to
+            });
+        });
+    });
+
     // Footer background color.
     wp.customize('theme_footer_color', function (value) {
         value.bind(function (to) {
@@ -73,6 +91,15 @@
             });
             $('.logged-in-as a:hover, .logged-in-as a:hover:focus, .pagination .current, .page-content a:hover, .page-content a:focus, .entry-content a:hover, .entry-content a:focus, .entry-summary a:hover, .entry-summary a:focus, .comment-content a:hover, .comment-content a:focus, .footer-left-column a:hover, .footer-left-column a:focus, .footer-right-column a:hover, .footer-right-column a:focus, .site-info a:hover, .site-info a:focus, .main-navigation a:hover, .main-navigation a:focus, .entry-title a:hover, .entry-title a:focus, .page-title a:hover, .page-title a:focus, .posted-on a:hover, .posted-on a:focus, .cat-links a:hover, .cat-links a:focus, .comments-link a:hover, .comments-link a:focus, .edit-link a:hover, .edit-link a:focus, .widget a:hover, .widget a:focus, .fa-home:hover, .fa-home:focus .menu-toggle button:hover').css({
                 'color': to
+            });
+        });
+    });
+
+    // Toggle page.php title visibility.
+    wp.customize('page_title_visibility', function (value) {
+        value.bind(function (to) {
+            $('.page .entry-title').css({
+                'display': to
             });
         });
     });

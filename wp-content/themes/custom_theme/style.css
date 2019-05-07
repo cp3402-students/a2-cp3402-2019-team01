@@ -590,10 +590,6 @@ th {
     border-bottom: 1px solid #e8c547;
 }
 
-tr {
-    border-bottom: 1px solid #eee;
-}
-
 td {
     padding: 0.4em;
 }
@@ -1447,10 +1443,6 @@ button.dropdown-toggle:hover, button.dropdown-toggle:focus {
     margin-bottom: 1em;
 }
 
-.page .entry-title {
-    display: none;
-}
-
 /*--------------------------------------------------------------
 ## Archive
 --------------------------------------------------------------*/
@@ -2136,6 +2128,7 @@ button.dropdown-toggle:hover, button.dropdown-toggle:focus {
     padding: 1em 0;
     background-color: #484a51;
     border-top: 1px solid #e8c547;
+    color: #ffffff;
 }
 
 @media screen and (min-width: 600px) {
