@@ -4,3 +4,4 @@
 *.pem
 db_data
 .idea
+.DS_Store
