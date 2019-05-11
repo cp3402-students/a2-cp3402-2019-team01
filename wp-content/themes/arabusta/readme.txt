@@ -36,6 +36,8 @@ Arabusta relies on the following third-party resources:
 
 *Main image in theme screenshot, photo by Afta Putta Gunawan, License: Open source, unlicensed, free-to-use, https://www.pexels.com/photo/assorted-decors-with-brown-rack-inside-store-683039/
 
+*Logo in theme screenshot, photo by Pixabay, License: Open source, unlicensed, free-to-use, Source: https://www.pexels.com/photo/blue-ceramic-tea-cup-with-beans-on-plate-162707
+
 == Changelog ==
 
 = 1.0 =
