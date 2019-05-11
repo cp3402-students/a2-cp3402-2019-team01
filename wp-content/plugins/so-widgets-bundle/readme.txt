@@ -1,9 +1,9 @@
 === SiteOrigin Widgets Bundle ===
 Tags: bundle, widget, button, slider, image, carousel, price table, google maps, tinymce, social links
 Requires at least: 4.2
-Tested up to: 5.1
-Stable tag: 1.15.4
-Build time: 2019-04-25T13:09:36-07:00
+Tested up to: 5.2
+Stable tag: 1.15.6
+Build time: 2019-04-29T11:24:58-07:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis
 Donate link: https://siteorigin.com/downloads/premium/
@@ -64,6 +64,12 @@ The SiteOrigin Widgets Bundle is the perfect platform to build widgets for your 
 3. An example of the button widget.
 
 == Changelog ==
+
+= 1.15.6 - 29 April 2019 =
+* Image: Fix images vertical stretching.
+* Image: Fix widths for images wrapped in links.
+* Google Maps Location Field: Remove some unnecessary use of jQuery to avoid `$ is not a function` errors.
+* Google Maps Location Field: Check if matchError exists before accessing.
 
 = 1.15.5 - 25 April 2019 =
 * Removed admin notice for new widgets.
