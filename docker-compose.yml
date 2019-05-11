@@ -17,7 +17,7 @@ services:
       - db
     image: wordpress:latest
     volumes:
-      - ./wp-content/themes/custom_theme:/var/www/html/wp-content/themes/custom_theme
+      - ./wp-content/themes/arabusta:/var/www/html/wp-content/themes/arabusta
       - ./wp-content/plugins:/var/www/html/wp-content/plugins
     ports:
       - "8000:80"

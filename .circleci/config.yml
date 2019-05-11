@@ -3,7 +3,7 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: kroniak/ssh-client
+      - image: instrumentisto/rsync-ssh
     steps:
       - checkout
       - add_ssh_keys
