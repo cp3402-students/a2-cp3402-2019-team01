@@ -12,8 +12,13 @@ deploy_to_env () {
 }
 
 pull_prod_locally () {
-    docker exec -it a2-cp-3402-2019-team01_db_1 sh -c "mysqldump -h ${REMOTE_DB_HOST} -u ${REMOTE_DB_USERNAME} --password=${REMOTE_DB_PASSWORD} ${REMOTE_DB_NAME} > db_prod_dump.sql"
-    docker exec -it a2-cp-3402-2019-team01_db_1 sh -c "mysql -h localhost -u root -p\$MYSQL_ROOT_PASSWORD \$MYSQL_DATABASE < db_prod_dump.sql"
+    docker exec -it a2-cp3402-2019-team01_db_1 sh -c "mysqldump -h ${REMOTE_DB_HOST} -u ${REMOTE_DB_USERNAME} --password=${REMOTE_DB_PASSWORD} ${REMOTE_DB_NAME} > db_prod_dump.sql"
+    docker exec -it a2-cp3402-2019-team01_db_1 sh -c "mysql -h localhost -u root -p\$MYSQL_ROOT_PASSWORD \$MYSQL_DATABASE < db_prod_dump.sql"
+}
+
+pull_prod_locally_win () {
+    winpty docker exec -it a2-cp3402-2019-team01_db_1 sh -c "mysqldump -h ${REMOTE_DB_HOST} -u ${REMOTE_DB_USERNAME} --password=${REMOTE_DB_PASSWORD} ${REMOTE_DB_NAME} > db_prod_dump.sql"
+    winpty docker exec -it a2-cp3402-2019-team01_db_1 sh -c "mysql -h localhost -u root -p\$MYSQL_ROOT_PASSWORD \$MYSQL_DATABASE < db_prod_dump.sql"
 }
 
 eval $@
