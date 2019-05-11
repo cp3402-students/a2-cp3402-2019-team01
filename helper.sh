@@ -5,8 +5,8 @@ set -euo pipefail
 deploy_to_env () {
     local env=$1
     echo Deploying to ${env}
-    rsync -r -a -v -e ssh -o "StrictHostKeyChecking no" --delete $(pwd)/wp-content/plugins ec2-user@13.239.37.152:/ecs/cp3402-${env}-storage/wp-content/plugins
-    rsync -r -a -v -e ssh -o "StrictHostKeyChecking no" --delete $(pwd)/wp-content/themes/arabusta ec2-user@13.239.37.152:/ecs/cp3402-${env}-storage/wp-content/themes/arabusta
+    rsync -r -a -v -e "ssh -o StrictHostKeyChecking=no" --delete $(pwd)/wp-content/plugins ec2-user@13.239.37.152:/ecs/cp3402-${env}-storage/wp-content/plugins
+    rsync -r -a -v -e "ssh -o StrictHostKeyChecking=no" --delete $(pwd)/wp-content/themes/arabusta ec2-user@13.239.37.152:/ecs/cp3402-${env}-storage/wp-content/themes/arabusta
 }
 
 pull_prod_locally () {
