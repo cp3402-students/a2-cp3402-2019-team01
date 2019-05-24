@@ -13,7 +13,6 @@
   font-family: $font__sans;
   color: #fff;
   background-color: #30323d;
-
   border-bottom: $color__theme-highlight 2px solid;
 }
 
@@ -54,6 +53,7 @@
   font-size: 1.75em;
   font-weight: 900;
   line-height: 1em;
+  //font-family: $font__demo;
 
   a {
     color: white;
