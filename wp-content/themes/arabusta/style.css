@@ -1023,6 +1023,7 @@ textarea:active, textarea:hover, textarea:focus {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1em;
+  text-shadow: 0.08em 0.08em #000000;
 }
 @media screen and (min-width: 600px) {
   .site-header {
@@ -1052,7 +1053,7 @@ textarea:active, textarea:hover, textarea:focus {
 }
 
 .site-title, .site-title p {
-  font-size: 1.6em;
+  font-size: 1.75em;
   font-weight: 900;
   line-height: 1em;
 }
@@ -1066,7 +1067,7 @@ textarea:active, textarea:hover, textarea:focus {
 
 .site-description {
   margin: 0;
-  font-size: 0.9em;
+  font-size: 0.95em;
   font-style: italic;
   font-weight: 100;
 }
@@ -1158,6 +1159,7 @@ Header Menu
   display: inline-block;
   width: 100%;
   padding: 0.5em 1em 0.5em 0;
+  text-shadow: 0.08em 0.08em #000000;
   text-decoration: none;
   color: #fff;
 }
@@ -1654,6 +1656,7 @@ button.dropdown-toggle:hover, button.dropdown-toggle:focus {
   font-family: "Roboto", "Open Sans", "Tahoma", "Verdana", "Calibri", sans-serif;
   color: #ffffff;
   background-color: #30323d;
+  text-shadow: 0.08em 0.08em #000000;
   border-top: #e8c547 2px solid;
 }
 @media screen and (min-width: 600px) {
