@@ -153,6 +153,8 @@ function arabusta_fonts_url()
 
     $open_sans = _x('on', 'Open Sans font: on or off', 'arabusta');
 
+    $carter_one =  _x('on', 'Carter One font: on or off', 'arabusta');
+
     $font_families = array();
 
     if ('off' !== $roboto) {
@@ -160,6 +162,9 @@ function arabusta_fonts_url()
     }
     if ('off' !== $open_sans) {
         $font_families[] = 'Open+Sans:400,400i,700,700i';
+    }
+    if ('off' !== $carter_one) {
+        $font_families[] = 'Carter One';
     }
 
     if (in_array('on', array($roboto, $open_sans))) {
