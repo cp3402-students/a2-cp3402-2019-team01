@@ -47,6 +47,3 @@ Static file changes if tested in production would effect end users and therefore
 
 ## Deploying wordpress
 Deploying changes to the wordpress theme or plugins is an automatic process. The branches `master` and `staging` should be a mirror of their respective environment. This is to say that changes in master should also be in production and the two should never be out of sync unless an error has occurred. The same is to be said for staging. When branches are merged to staging or master, CircleCI is configured to deploy those changes automatically.
-
-## Developing & Deploying Infrastructure
-TODO
