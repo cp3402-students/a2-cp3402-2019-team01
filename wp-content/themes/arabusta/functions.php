@@ -164,10 +164,10 @@ function arabusta_fonts_url()
         $font_families[] = 'Open+Sans:400,400i,700,700i';
     }
     if ('off' !== $carter_one) {
-        $font_families[] = 'Carter+One';
+        $font_families[] = 'Carter One';
     }
 
-    if (in_array('on', array($roboto, $open_sans, $carter_one))) {
+    if (in_array('on', array($roboto, $open_sans))) {
         $query_args = array(
             'family' => urlencode(implode('|', $font_families)),
             'subset' => urlencode('latin,latin-ext'),
